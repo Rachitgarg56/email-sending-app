@@ -1,10 +1,15 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
+const path = require('path');
 require('dotenv').config();
 
 const app = express(); 
 
 app.use(express.urlencoded( { extended: true } ));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 app.post('/send-email', (req,res) => {
     const { to, subject, message } = req.body;
@@ -23,8 +28,8 @@ app.post('/send-email', (req,res) => {
         host: 'smtp.ethereal.email',
         port: 587,
         auth: {
-            user: 'monserrate.jacobson@ethereal.email',
-            pass: 'bw4R6WxxvxQektxzwW'
+            user: 'lucious.satterfield@ethereal.email',
+            pass: 'S12VJvZ6M2XeZthu5a'
         }
     });
 
